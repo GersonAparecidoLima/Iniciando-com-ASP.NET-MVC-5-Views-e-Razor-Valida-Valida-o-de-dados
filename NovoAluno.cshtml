@@ -1,0 +1,92 @@
+﻿<!--Indicando qual model utilizada -->
+@model  Paramentro.Models.Aluno
+
+
+<h2>NovoAluno</h2>
+<!--
+<form method="post" action="">
+using e um termo para criar um contexto
+esta inicando um BeginForm ou seja estou iniciando um formulario
+e começa no { e termina no }
+Ou seja o formulario está aqui.
+-->
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        <h4>Informe os dados do Aluno</h4>
+        <hr />
+    </div>
+    <!--ValidationSummary e como se fosse um resumo dos erro
+        excludePropertyErrors quando setada com true que não vai mostra os erros das propredades que no caso não
+        são erros de validação
+        excludePropertyErrors quando setada com False mostra todos os erros
+        message: "Encontramos Erro na Validação"
+        temos a opção de message: ""
+     -->
+
+
+
+    @Html.ValidationSummary(excludePropertyErrors:true, message: "", htmlAttributes: new { @class = "text-danger" })
+
+
+
+    <div class="form-group">
+        <!--<label class="control-label col-md-2">Nome Completo:</label>-->
+        <!--LabelFor e para uma model especifica-->
+        @Html.LabelFor(m => m.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
+        <!--Estilizando css htmlAttributes-->
+        <div class="col-md-10">
+            @Html.EditorFor(m => m.Nome, additionalViewData: new { @class = "control-label col-md-2" })
+            <!-- Apresentar a msg de validação abaixo  -->
+            @Html.ValidationMessageFor(m => m.Nome, validationMessage:"", htmlAttributes: new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <!--<label class="control-label col-md-2">Nome Completo:</label>-->
+        <!--LabelFor e para uma model especifica-->
+        @Html.LabelFor(m => m.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+        <!--Estilizando css htmlAttributes-->
+        <div class="col-md-10">
+            @Html.EditorFor(m => m.Email, additionalViewData: new { @class = "control-label col-md-2" })
+            <!-- Apresentar a msg de validação abaixo  -->
+            @Html.ValidationMessageFor(m => m.Email, validationMessage: "", htmlAttributes: new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <!--<label class="control-label col-md-2">Nome Completo:</label>-->
+        <!--LabelFor e para uma model especifica-->
+        @Html.LabelFor(m => m.Cpf, htmlAttributes: new { @class = "control-label col-md-2" })
+        <!--Estilizando css htmlAttributes-->
+        <div class="col-md-10">
+            @Html.EditorFor(m => m.Cpf, additionalViewData: new { @class = "control-label col-md-2" })
+            <!-- Apresentar a msg de validação abaixo  -->
+            @Html.ValidationMessageFor(m => m.Cpf, validationMessage: "", htmlAttributes: new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <!--<label class="control-label col-md-2">Nome Completo:</label>-->
+        <!--LabelFor e para uma model especifica-->
+        @Html.LabelFor(m => m.Ativo, htmlAttributes: new { @class = "control-label col-md-2" })
+        <!--Estilizando css htmlAttributes-->
+        <div class="col-md-10">
+            @Html.CheckBoxFor(m => m.Ativo, htmlAttributes: new { @class = "control-label col-md-2" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-md-offset-10">
+
+            <button type="submit" value="Enviar" class="btn btn-primary">Enviar</button>
+        </div>
+    </div>
+}
+<!--
+</form>
+-->
